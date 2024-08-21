@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        /* Add some styling to improve readability and usability */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Heart Disease Prediction Form</h2>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="{{ url_for('predict') }}" method="post">
+        <label for="age">Enter age (e.g., 45):</label>
+        <input type="text" id="age" name="age" required>
+
+        <label for="gender">Enter gender (0 for female, 1 for male):</label>
+        <input type="text" id="gender" name="gender" required>
+
+        <label for="chest_pain">Enter chest pain type (0 = none, 1 = atypical angina, 2 = non-anginal pain, 3 = angina):</label>
+        <input type="text" id="chest_pain" name="chest_pain" required>
+
+        <label for="blood_pressure">Enter resting blood pressure (in mm Hg, e.g., 136):</label>
+        <input type="text" id="blood_pressure" name="blood_pressure" required>
+
+        <label for="cholesterol">Enter serum cholesterol level (in mg/dl, e.g., 298):</label>
+        <input type="text" id="cholesterol" name="cholesterol" required>
+
+        <label for="blood_sugar">Enter fasting blood sugar (>120 mg/dl, 1 if true, 0 if false):</label>
+        <input type="text" id="blood_sugar" name="blood_sugar" required>
+
+        <label for="electrocardiographic">Enter electrocardiographic results (0 = normal, 1 = ST-T wave abnormality, 2 = showing probable or definite left ventricular hypertrophy):</label>
+        <input type="text" id="electrocardiographic" name="electrocardiographic" required>
+
+        <label for="heart_rate">Enter maximum heart rate achieved (e.g., 150):</label>
+        <input type="text" id="heart_rate" name="heart_rate" required>
+
+        <label for="exercise_angina">Enter exercise-induced angina (1 if yes, 0 if no):</label>
+        <input type="text" id="exercise_angina" name="exercise_angina" required>
+
+        <label for="oldpeak">Enter depression induced by exercise relative to rest (e.g., 1.2):</label>
+        <input type="text" id="oldpeak" name="oldpeak" required>
+
+        <label for="slope">Enter the slope of the peak exercise ST segment (0 = upsloping, 1 = flat, 2 = downsloping):</label>
+        <input type="text" id="slope" name="slope" required>
+
+        <label for="ca">Enter number of major vessels colored by fluoroscopy (0-3):</label>
+        <input type="text" id="ca" name="ca" required>
+
+        <label for="thal">Enter thalassemia (1 = normal, 2 = fixed defect, 3 = reversible defect):</label>
+        <input type="text" id="thal" name="thal" required>
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
